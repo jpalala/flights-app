@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('flights', 'ApiController@getAllStudents');
+// Here are the api routes to link the API for your use 
+Route::get('flights', 'FlightController@index');
 Route::get('flights/{id}', 'FlightController@show');
 Route::put('flights/{id}', 'FlightController@update');
 Route::post('flights', 'FlightController@store');

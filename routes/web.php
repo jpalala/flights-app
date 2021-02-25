@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::api('blah', store, create);
+//Route::api('blah', store, create);
