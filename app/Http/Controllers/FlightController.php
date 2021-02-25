@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Flight;
+use App\Flight as Flight;
 
 class FlightController extends Controller
 {
@@ -43,17 +43,21 @@ class FlightController extends Controller
 		    'artival time' => 'required'
 		    'name' => required
 	    ]);
-	    $data-> $request->all();
+	    $data = $request->all();
 
-			$this->fill([
-					'destination' => $data['destination'],
-				'origin' => $data['origin'],
-				'departure_time' => $data['departure_time'],
-				'arrival_time' => $data['arrival_time'],
-				'name' => $data['name']]
-			);
+        $this->fill([
+			'destination' => $data['destination'],
+			'origin' => $data['origin'],
+			'departure_time' => $data['departure_time'],
+			'arrival_time' => $data['arrival_time'],
+			'name' => $data['name']
+        );
+
 		$this->save();
-		return success;
+        
+        return response()->json([
+            'message' => 'success',
+        ]);;
 
     }
 
@@ -65,7 +69,8 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        //
+        $flight = Flight::findOrFail($id);
+        return response()->json($flight);
     }
 
     /**
