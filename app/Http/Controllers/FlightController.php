@@ -94,15 +94,17 @@ class FlightController extends Controller
     public function update(Request $request, $id)
     {
         $flight = Flight::find($id);
-	$flight->destination = $request->input('destination');
-	$flight->origin = $request->input('origin');
-	$flight->departure_time = $request->input('departure_time');;
-	$flight->arrival_time = $request->input('arrival_time');;
-	$flight->name = $request->input('name');;
-	$photo->delayed = $request->input('delayed');;
-	$photo->cancelled = $request->input('cancelled');;
-	    $photo->save();
-    return $photo;
+        $flight->destination = $request->input('destination');
+        $flight->origin = $request->input('origin');
+        $flight->departure_time = $request->input('departure_time');
+        $flight->arrival_time = $request->input('arrival_time');
+        $flight->name = $request->input('name');
+        $flight->delayed = $request->input('delayed');
+        $flight->cancelled = $request->input('cancelled');
+
+        $flight->save();
+
+        return $flight;
     }
 
     /**
