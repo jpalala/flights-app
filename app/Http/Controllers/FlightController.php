@@ -36,22 +36,23 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-	    $this->validate($request, [
+        $this->validate($request, [
+            'name' => 'required',
 		    'destination' => 'required',
 		    'origin' => 'required',
-		    'departime' => 'required',
-		    'artival time' => 'required'
-		    'name' => required
-	    ]);
+		    'departure_time' => 'required',
+		    'arrival_time' => 'required'
+        ]);
+
 	    $data = $request->all();
 
         $this->fill([
+			'name' => $data['name'],
 			'destination' => $data['destination'],
 			'origin' => $data['origin'],
 			'departure_time' => $data['departure_time'],
-			'arrival_time' => $data['arrival_time'],
-			'name' => $data['name']
-        );
+			'arrival_time' => $data['arrival_time']
+        ]);
 
 		$this->save();
         
